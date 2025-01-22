@@ -1,14 +1,14 @@
 package com.hw.news.task.wechat.function;
 
-import com.hsmap.news.task.wechat.dto.WechatNewsDto;
-import com.hsmap.news.util.DateUtil;
+import com.hw.news.task.wechat.dto.WechatNewsDto;
+import com.hw.news.util.DateUtil;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Map;
 import java.util.UUID;
 
-import static com.hsmap.news.util.JsonTextUtil.parseTextValue;
+import static com.hw.news.util.JsonTextUtil.parseTextValue;
 
 public class WechatMapFunction implements MapFunction<String, WechatNewsDto> {
     private final ObjectMapper objectMapper = new ObjectMapper();

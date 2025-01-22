@@ -1,7 +1,7 @@
 package com.hw.news.task.realtime.function;
 
-import com.hsmap.news.task.realtime.dto.RealtimeNewsDto;
-import com.hsmap.news.util.DateUtil;
+import com.hw.news.task.realtime.dto.RealtimeNewsDto;
+import com.hw.news.util.DateUtil;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.ObjectMapper;
 

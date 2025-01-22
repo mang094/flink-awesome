@@ -1,14 +1,14 @@
 package com.hw.news.task.consult.function;
 
-import com.hsmap.news.task.consult.dto.ConsultNewsDto;
-import com.hsmap.news.util.DateUtil;
+import com.hw.news.task.consult.dto.ConsultNewsDto;
+import com.hw.news.util.DateUtil;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Map;
 import java.util.UUID;
 
-import static com.hsmap.news.util.JsonTextUtil.*;
+import static com.hw.news.util.JsonTextUtil.*;
 
 public class ConsultNewsMapFunction implements MapFunction<String, ConsultNewsDto> {
 

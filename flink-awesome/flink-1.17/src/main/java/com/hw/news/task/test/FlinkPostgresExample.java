@@ -9,8 +9,7 @@ import org.apache.flink.table.api.Table;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 import org.apache.flink.types.Row;
 
-import static com.hsmap.news.jdbc.SaasPostgresHelper.*;
-import static com.hsmap.news.jdbc.SaasPostgresHelper.JDBC_USER_PASSWORD;
+import static com.hw.news.jdbc.SaasPostgresHelper.*;
 
 
 public class FlinkPostgresExample {

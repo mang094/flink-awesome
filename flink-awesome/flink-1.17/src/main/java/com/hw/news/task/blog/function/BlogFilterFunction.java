@@ -5,7 +5,7 @@ import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.ObjectMap
 
 import java.util.Map;
 
-import static com.hsmap.news.util.JsonTextUtil.parseTextValue;
+import static com.hw.news.util.JsonTextUtil.parseTextValue;
 
 public class BlogFilterFunction implements FilterFunction<String> {
     private final ObjectMapper objectMapper = new ObjectMapper();

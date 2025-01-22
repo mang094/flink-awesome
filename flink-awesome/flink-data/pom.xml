@@ -124,25 +124,25 @@
 
         <!-- Logging -->
 
-        <dependency>
+<!--        <dependency>-->
 
-            <groupId>org.slf4j</groupId>
+<!--            <groupId>org.slf4j</groupId>-->
 
-            <artifactId>slf4j-api</artifactId>
+<!--            <artifactId>slf4j-api</artifactId>-->
 
-            <version>1.7.32</version>
+<!--            <version>1.7.32</version>-->
 
-        </dependency>
+<!--        </dependency>-->
 
-        <dependency>
+<!--        <dependency>-->
 
-            <groupId>org.slf4j</groupId>
+<!--            <groupId>org.slf4j</groupId>-->
 
-            <artifactId>slf4j-log4j12</artifactId>
+<!--            <artifactId>slf4j-log4j12</artifactId>-->
 
-            <version>1.7.32</version>
+<!--            <version>1.7.32</version>-->
 
-        </dependency>
+<!--        </dependency>-->
 
         <!-- 添加 Flink JSON 依赖 -->
         <dependency>

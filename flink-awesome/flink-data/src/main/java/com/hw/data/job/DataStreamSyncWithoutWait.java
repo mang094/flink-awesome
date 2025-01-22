@@ -28,6 +28,7 @@ import org.apache.kafka.connect.source.SourceRecord;
 import org.apache.kafka.connect.data.Struct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.apache.log4j.BasicConfigurator;
 
 import java.util.Properties;
 
@@ -44,10 +45,15 @@ public class DataStreamSyncWithoutWait {
     private static final Logger LOG = LoggerFactory.getLogger(DataStreamSyncWithoutWait.class);
     
     public static void main(String[] args) throws Exception {
+        // 初始化log4j配置
+        //BasicConfigurator.configure();
+        
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         
         // 设置检查点,确保数据一致性
         env.enableCheckpointing(5000);
+        // 设置并行度为1，避免数据分散
+        env.setParallelism(1);
 
         Properties debeziumProperties = new Properties();
         debeziumProperties.put("decimal.handling.mode", "string");

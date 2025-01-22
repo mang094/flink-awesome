@@ -1,11 +1,11 @@
 package com.hw.news.task.blog;
 
 import com.alibaba.fastjson.JSON;
-import com.hsmap.news.kafka.CommonKafkaSourceHelper;
-import com.hsmap.news.kafka.SaaSKafkaSInkHelper;
-import com.hsmap.news.task.blog.dto.BlogNewsDto;
-import com.hsmap.news.task.blog.function.BlogFilterFunction;
-import com.hsmap.news.task.blog.function.BlogMapFunction;
+import com.hw.news.kafka.CommonKafkaSourceHelper;
+import com.hw.news.kafka.SaaSKafkaSInkHelper;
+import com.hw.news.task.blog.dto.BlogNewsDto;
+import com.hw.news.task.blog.function.BlogFilterFunction;
+import com.hw.news.task.blog.function.BlogMapFunction;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.connector.jdbc.JdbcConnectionOptions;
 import org.apache.flink.connector.jdbc.JdbcExecutionOptions;
@@ -17,8 +17,8 @@ import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.sink.SinkFunction;
 
-import static com.hsmap.news.jdbc.SaasPostgresHelper.*;
-import static com.hsmap.news.jdbc.SaasPostgresHelper.JDBC_USER_PASSWORD;
+import static com.hw.news.jdbc.SaasPostgresHelper.*;
+import static com.hw.news.jdbc.SaasPostgresHelper.JDBC_USER_PASSWORD;
 
 public class BlogNewsSample {
     private static final String kafka_source_name = "kafka-blog-news-source";

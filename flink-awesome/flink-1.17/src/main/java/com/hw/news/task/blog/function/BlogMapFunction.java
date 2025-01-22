@@ -1,14 +1,14 @@
 package com.hw.news.task.blog.function;
 
-import com.hsmap.news.task.blog.dto.BlogNewsDto;
-import com.hsmap.news.util.DateUtil;
+import com.hw.news.task.blog.dto.BlogNewsDto;
+import com.hw.news.util.DateUtil;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Map;
 import java.util.UUID;
 
-import static com.hsmap.news.util.JsonTextUtil.parseTextValue;
+import static com.hw.news.util.JsonTextUtil.parseTextValue;
 
 public class BlogMapFunction implements MapFunction<String, BlogNewsDto> {
     private final ObjectMapper objectMapper = new ObjectMapper();

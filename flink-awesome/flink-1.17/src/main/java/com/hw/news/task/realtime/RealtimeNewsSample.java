@@ -1,9 +1,9 @@
 package com.hw.news.task.realtime;
 
-import com.hsmap.news.kafka.CommonKafkaSourceHelper;
-import com.hsmap.news.task.realtime.dto.RealtimeNewsDto;
-import com.hsmap.news.task.realtime.function.NewsFilterFunction;
-import com.hsmap.news.task.realtime.function.NewsMapFunction;
+import com.hw.news.kafka.CommonKafkaSourceHelper;
+import com.hw.news.task.realtime.dto.RealtimeNewsDto;
+import com.hw.news.task.realtime.function.NewsFilterFunction;
+import com.hw.news.task.realtime.function.NewsMapFunction;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.connector.jdbc.JdbcConnectionOptions;
 import org.apache.flink.connector.jdbc.JdbcExecutionOptions;
@@ -15,7 +15,7 @@ import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.sink.SinkFunction;
 
-import static com.hsmap.news.jdbc.SaasPostgresHelper.*;
+import static com.hw.news.jdbc.SaasPostgresHelper.*;
 
 public class RealtimeNewsSample {
     private static final String kafka_source_name = "kafka-realtime-news-source";

@@ -1,10 +1,10 @@
 package com.hw.news.task.consult;
 
 import com.alibaba.fastjson.JSON;
-import com.hsmap.news.kafka.CommonKafkaSourceHelper;
-import com.hsmap.news.kafka.SaaSKafkaSInkHelper;
-import com.hsmap.news.task.consult.dto.ConsultNewsDto;
-import com.hsmap.news.task.consult.function.ConsultNewsMapFunction;
+import com.hw.news.kafka.CommonKafkaSourceHelper;
+import com.hw.news.kafka.SaaSKafkaSInkHelper;
+import com.hw.news.task.consult.dto.ConsultNewsDto;
+import com.hw.news.task.consult.function.ConsultNewsMapFunction;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.connector.jdbc.JdbcConnectionOptions;
 import org.apache.flink.connector.jdbc.JdbcExecutionOptions;
@@ -16,8 +16,8 @@ import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.sink.SinkFunction;
 
-import static com.hsmap.news.jdbc.SaasPostgresHelper.*;
-import static com.hsmap.news.jdbc.SaasPostgresHelper.JDBC_USER_PASSWORD;
+import static com.hw.news.jdbc.SaasPostgresHelper.*;
+import static com.hw.news.jdbc.SaasPostgresHelper.JDBC_USER_PASSWORD;
 
 public class ConsultNewsSample {
     private static final String kafka_source_name = "kafka-consult-news-source";
