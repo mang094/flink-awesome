@@ -3,6 +3,7 @@ package com.hw.entity;
 import java.sql.Date;
 
 public class SubTableData {
+
     private Long id;
     private Long mainTableId;
     private String subData;
