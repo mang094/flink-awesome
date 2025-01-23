@@ -52,60 +52,60 @@ public class MySQLCdc2MySQLJob {
         source.print().name("Source Data");
         
         // 转换为UserInfo对象
-        SingleOutputStreamOperator<UserInfo> userInfoStream = source.process(new ProcessFunction<String, UserInfo>() {
-            @Override
-            public void processElement(String value, Context ctx, Collector<UserInfo> out) {
-                try {
-                    JsonNode jsonNode = OBJECT_MAPPER.readTree(value);
-                    JsonNode after = jsonNode.get("after");
-                    JsonNode before = jsonNode.get("before");
-                    String op = jsonNode.get("op").asText();
-
-                    if ("d".equals(op)) {
-                        // 处理删除操作
-                        UserInfo userInfo = new UserInfo();
-                        userInfo.setId(before.get("id").asLong());
-                        out.collect(userInfo);
-                    } else if (after != null) {
-                        // 处理插入和更新操作
-                        System.out.println("..................................");
-                        UserInfo userInfo = new UserInfo();
-                        userInfo.setId(after.get("id").asLong());
-                        userInfo.setName(after.get("name").asText());
-                        userInfo.setAge(after.get("age").asInt());
-                        userInfo.setEmail(after.get("email").asText());
-                        out.collect(userInfo);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }).name("Process CDC Data");
-
-        // 添加MySQL sink
-        String targetSql = "INSERT INTO user_info_1 (id, name, age, email) VALUES (?, ?, ?, ?) " +
-                          "ON DUPLICATE KEY UPDATE name=VALUES(name), age=VALUES(age), email=VALUES(email)";
-
-        userInfoStream.addSink(JdbcSink.<UserInfo>sink(
-            targetSql,
-            (statement, userInfo) -> {
-                statement.setLong(1, userInfo.getId());
-                statement.setString(2, userInfo.getName());
-                statement.setInt(3, userInfo.getAge());
-                statement.setString(4, userInfo.getEmail());
-            },
-            new JdbcExecutionOptions.Builder()
-                .withBatchSize(1000)
-                .withBatchIntervalMs(200)
-                .withMaxRetries(3)
-                .build(),
-            new JdbcConnectionOptions.JdbcConnectionOptionsBuilder()
-                .withUrl("jdbc:mysql://localhost:3306/test")
-                .withDriverName("com.mysql.cj.jdbc.Driver")
-                .withUsername("root")
-                .withPassword("123456")
-                .build()
-        )).name("MySQL Sink");
+//        SingleOutputStreamOperator<UserInfo> userInfoStream = source.process(new ProcessFunction<String, UserInfo>() {
+//            @Override
+//            public void processElement(String value, Context ctx, Collector<UserInfo> out) {
+//                try {
+//                    JsonNode jsonNode = OBJECT_MAPPER.readTree(value);
+//                    JsonNode after = jsonNode.get("after");
+//                    JsonNode before = jsonNode.get("before");
+//                    String op = jsonNode.get("op").asText();
+//
+//                    if ("d".equals(op)) {
+//                        // 处理删除操作
+//                        UserInfo userInfo = new UserInfo();
+//                        userInfo.setId(before.get("id").asLong());
+//                        out.collect(userInfo);
+//                    } else if (after != null) {
+//                        // 处理插入和更新操作
+//                        System.out.println("..................................");
+//                        UserInfo userInfo = new UserInfo();
+//                        userInfo.setId(after.get("id").asLong());
+//                        userInfo.setName(after.get("name").asText());
+//                        userInfo.setAge(after.get("age").asInt());
+//                        userInfo.setEmail(after.get("email").asText());
+//                        out.collect(userInfo);
+//                    }
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }).name("Process CDC Data");
+//
+//        // 添加MySQL sink
+//        String targetSql = "INSERT INTO user_info_1 (id, name, age, email) VALUES (?, ?, ?, ?) " +
+//                          "ON DUPLICATE KEY UPDATE name=VALUES(name), age=VALUES(age), email=VALUES(email)";
+//
+//        userInfoStream.addSink(JdbcSink.<UserInfo>sink(
+//            targetSql,
+//            (statement, userInfo) -> {
+//                statement.setLong(1, userInfo.getId());
+//                statement.setString(2, userInfo.getName());
+//                statement.setInt(3, userInfo.getAge());
+//                statement.setString(4, userInfo.getEmail());
+//            },
+//            new JdbcExecutionOptions.Builder()
+//                .withBatchSize(1000)
+//                .withBatchIntervalMs(200)
+//                .withMaxRetries(3)
+//                .build(),
+//            new JdbcConnectionOptions.JdbcConnectionOptionsBuilder()
+//                .withUrl("jdbc:mysql://localhost:3306/test")
+//                .withDriverName("com.mysql.cj.jdbc.Driver")
+//                .withUsername("root")
+//                .withPassword("123456")
+//                .build()
+//        )).name("MySQL Sink");
 
         // 设置检查点
         env.enableCheckpointing(3000);
