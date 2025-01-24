@@ -26,7 +26,8 @@ OceanBase 是一款原生分布式关系型数据库，具备高性能和高可�
 MaxCompute Pipeline Connector
 MaxCompute 是阿里云提供的分布式大数据处理平台，广泛应用于数据分析、报表生成、机器学习等场景。现在可以作为 YAML Pipeline Sink 使用。
 Paimon Pipeline Connector支持同步列默认值。支持应用 TRUNCATE TABLE 和 DROP TABLE 事件。更新 Paimon 依赖版本到 0.9.0。
-MySQL Connector支持解析 gh-ost 和 pt-osc 等无锁 Schema 变更工具产生的 DDL 变更事件。新增是否将 TINYINT(1) 映射到 BOOLEAN 类型的配置。支持同步表注释及行注释。MySQL CDC 下发的增量数据记录中现在携带 op_ts 元数据列，可以在 Transform 表达式中进行操作。
+MySQL Connector支持解析 gh-ost 和 pt-osc 等无锁 Schema 变更工具产生的 DDL 变更事件。新增是否将 TINYINT(1) 映射到 BOOLEAN 类型的配置
+。支持同步表注释及行注释。MySQL CDC 下发的增量数据记录中现在携带 op_ts 元数据列，可以在 Transform 表达式中进行操作。
 PostgreSQL CDC Connector减少不必要的 Schema 查询，优化初次启动时间。支持 Heartbeat 心跳包。增加 op_type 元数据列。
 Common新增了用于快速搭建数据集成验证环境的 cdc-up 脚本。
 
