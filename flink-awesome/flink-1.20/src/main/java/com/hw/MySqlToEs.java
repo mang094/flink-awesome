@@ -57,6 +57,7 @@ public class MySqlToEs {
                     if (opNode == null) {
                         return;
                     }
+
                     
                     String op = opNode.asText();
 
